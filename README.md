@@ -23,6 +23,10 @@ factory pipelines. **ไม่มีคีย์ ไม่มีงานลู�
   (ขั้นคนตัดสิน) — ฟุตดิบเข้า → ตารางช็อต + ใบสั่งตัดออก
 - `factories/edit/pipeline.py` — ใบสั่งตัดเข้า → เบสคลิปออก
   (ห้าม zoompan ตามกฎบ้าน)
+- `factories/review/review_job.py` — AGY ดูวิดีโอเตรียมบท+ธงให้คนชี้ขาด
+  (AGY ห้ามล็อกบท) — วิดีโอเข้า → ร่างบท + uncertain list ออก
+- `factories/qa/pipeline.py` — ไฟล์ไฟนอลเข้า → คำตัดสิน + ส่ง Drive
+  (QA เฟรม + มิเตอร์ + ประตูเสียง, deliver ปิดเป็นค่าเริ่มต้น)
 - `renderer/` — สมองเบิร์นซับ (เทสต์ 162 ข้อ)
 
 ## เริ่มใช้ (Windows: Python 3.10+, ffmpeg)
