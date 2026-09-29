@@ -19,6 +19,10 @@ factory pipelines. **ไม่มีคีย์ ไม่มีงานลู�
 - `tools/` — vo_ingest / mix_bgm / qa_batch / drive_upload / drive_delete
 - `factories/subtitle/pipeline.py` — ใบสั่งซับเข้า → คลิปติดซับออก
 - `factories/audio/pipeline.py` — เสียงกลาง+คลิป+เพลงเข้า → มาสเตอร์ออก
+- `factories/scout/` — make_contact.py (contact sheet + metrics) + RUNBOOK
+  (ขั้นคนตัดสิน) — ฟุตดิบเข้า → ตารางช็อต + ใบสั่งตัดออก
+- `factories/edit/pipeline.py` — ใบสั่งตัดเข้า → เบสคลิปออก
+  (ห้าม zoompan ตามกฎบ้าน)
 - `renderer/` — สมองเบิร์นซับ (เทสต์ 162 ข้อ)
 
 ## เริ่มใช้ (Windows: Python 3.10+, ffmpeg)
