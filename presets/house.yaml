@@ -1,0 +1,38 @@
+# House presets — สูตรมาตรฐานบ้าน (Lip-locked, 2026-09-29)
+# เปลี่ยนค่าที่นี่ = เปลี่ยนทุกโรงพร้อมกัน ห้าม hardcode ค่าเหล่านี้ในสคริปต์งาน
+
+audio:
+  master_lufs: -15.0
+  master_tolerance: 1.0
+  true_peak_ceiling_dbtp: -1.0
+  vo_stem_lufs: -17.0
+  vo_stem_tp_ceiling_dbtp: -3.0
+  bgm_level_db: -20.0
+  bgm_fade_s: 1.0
+  duck_threshold: 0.015
+  duck_ratio: 8
+  sfx_bus_level: 0.2
+  fixed_makeup_db: 1.0
+  bed_lift_nominal_db: 2.0
+  speech_tolerance_db: 1.5
+  centroid_drift_max: 0.10
+  # BGM หลัก (Pixabay Commercial-use — โหลดเอง ไม่แถมไฟล์ใน repo)
+  tracks:
+    - id: piano-corporate-482783
+      mood: main
+    - id: piano-motivational-148119
+      mood: alt
+
+subtitle:
+  style: Viral Pop
+  font_file: glossary/Prompt-Bold.ttf
+  font_size: 104
+  margins: [47, 47, 158]
+  position: [540, 1580]
+  profile_vo: {min_s: 0.5, max_syl: 8, refuse_rate_syl_s: 12.0, warn_rate_syl_s: 7.0}
+  keywords_default: []
+
+gates:
+  stt_suspect_min_dur_s: 6.0
+  stt_suspect_min_density: 1.0
+  stt_desert_max_gap_s: 5.0

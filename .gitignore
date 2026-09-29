@@ -1,0 +1,8 @@
+# สิ่งที่ห้ามขึ้น repo นี้เด็ดขาด
+.env
+*.wav
+*.mp3
+*.mp4
+*.mov
+__pycache__/
+.venv/
