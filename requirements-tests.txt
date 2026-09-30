@@ -1,0 +1,3 @@
+# Shared test deps (CI + Windows fresh checkout).
+pytest>=7
+jsonschema>=4.18

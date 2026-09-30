@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/liplnwza548/lip-house-kit/schemas/asset-registry.schema.json",
+  "title": "Asset registry (BGM + SFX approved for pipeline use)",
+  "type": "object",
+  "required": ["registry_version", "assets"],
+  "properties": {
+    "registry_version": {"type": "integer", "minimum": 1},
+    "assets": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/asset"}}
+  },
+  "$defs": {
+    "asset": {
+      "type": "object",
+      "required": ["asset_id", "kind", "logical_path", "sha256", "source_url",
+        "license_name", "license_evidence", "commercial_use",
+        "attribution_required", "duration_s", "mood", "energy",
+        "approved", "approved_by", "approved_at"],
+      "properties": {
+        "asset_id": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["bgm", "sfx"]},
+        "logical_path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "source_url": {"type": "string", "minLength": 1},
+        "origin": {"type": "string"},
+        "license_name": {"type": "string", "minLength": 1},
+        "license_evidence": {"type": "string", "minLength": 1},
+        "commercial_use": {"type": "boolean"},
+        "attribution_required": {"type": "boolean"},
+        "duration_s": {"type": "number", "exclusiveMinimum": 0},
+        "mood": {"enum": ["general_sales", "inspiring", "warm", "relaxed",
+          "fun_upbeat", "neutral"]},
+        "energy": {"enum": ["low", "medium", "high"]},
+        "approved": {"type": "boolean"},
+        "approved_by": {"type": "string", "minLength": 1},
+        "approved_at": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+        "bpm": {"type": ["number", "null"]},
+        "instrumental": {"type": "boolean"},
+        "vocal_presence": {"type": "string"},
+        "loop_safe": {"type": "boolean"},
+        "event_types": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "min_gap_s": {"type": "number", "minimum": 0},
+        "avoid_during": {"type": "array", "items": {"type": "string"}},
+        "generator": {"type": "string"},
+        "notes": {"type": "string"}
+      },
+      "allOf": [
+        {"if": {"properties": {"kind": {"const": "bgm"}}},
+         "then": {"required": ["bpm", "instrumental", "vocal_presence", "loop_safe"]}},
+        {"if": {"properties": {"kind": {"const": "sfx"}}},
+         "then": {"required": ["event_types", "min_gap_s", "avoid_during"]}}
+      ]
+    }
+  }
+}
