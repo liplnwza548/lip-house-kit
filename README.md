@@ -47,3 +47,22 @@ work-order.json out/` → ได้คลิป + รายงาน (gate ไ�
 
 เพลงหลัก (Pixabay, โหลดเอง): piano-corporate-482783 (main),
 piano-motivational-148119 (alt) — กด -20dB ใต้เสียงพากย์ตาม presets
+
+## คลังสินทรัพย์ (asset registry — ต้องตั้ง ASSET_ROOT ก่อน)
+
+ไฟล์เพลง/SFX จริง**ไม่อยู่ใน repo** (public) — repo มีแค่ใบลงทะเบียน
+`assets/registry.json` + schema `schemas/asset-registry.schema.json`
+
+```powershell
+# 1) วางไฟล์มีเดียตามโครงนี้ (โหลดเองจาก source_url ใน registry)
+setx ASSET_ROOT "D:\lip-assets"   # มี bgm\*.mp3, bgm_new\*.mp3, sfx\*.wav ข้างใน
+# 2) ตรวจใบลงทะเบียน ( missing / SHA ผิด / license ขาด / ID ซ้ำ = หยุดดังๆ )
+$env:ASSET_ROOT="D:\lip-assets"; python tools/validate_registry.py
+# 3) รันเทสต์รีจิสทรี
+$env:ASSET_ROOT="D:\lip-assets"; python -m pytest tests/test_asset_registry.py -q
+```
+
+บน VM: `ASSET_ROOT=/home/box/subtitle-work/assets` (13 assets: BGM 5 + SFX 8,
+Lip-approved 2026-09-30). สร้าง/อัปเดตใบลงทะเบียน:
+`ASSET_ROOT=... python3 tools/build_registry.py` (วัด sha256+duration จากไฟล์จริง —
+bpm ว่างไว้ถ้าไม่มีเครื่องวัด ห้ามเดา)
