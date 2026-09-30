@@ -192,8 +192,8 @@
       "duration_s": 0.18,
       "mood": "neutral",
       "energy": "medium",
-      "approved": false,
-      "approved_by": "pending-Lip-listen",
+      "approved": true,
+      "approved_by": "Lip",
       "approved_at": "2026-09-30",
       "event_types": [
         "caption_pop"
@@ -206,7 +206,7 @@
         "warranty",
         "cta"
       ],
-      "notes": "RE-SYNTHESIZED 2026-09-30 (original overwritten by mistake); numerically within 1dB mean/max but NOT ear-approved — do not use in client work until Lip listens. 250->500Hz; batch track-A 2026-09-30",
+      "notes": "Re-synthesized 2026-09-30; Lip ear-approved in chat (replacing overwritten originals). RE-SYNTHESIZED 2026-09-30 (original overwritten by mistake); numerically within 1dB mean/max but NOT ear-approved — do not use in client work until Lip listens. 250->500Hz; batch track-A 2026-09-30",
       "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
@@ -223,8 +223,8 @@
       "duration_s": 0.8,
       "mood": "neutral",
       "energy": "medium",
-      "approved": false,
-      "approved_by": "pending-Lip-listen",
+      "approved": true,
+      "approved_by": "Lip",
       "approved_at": "2026-09-30",
       "event_types": [
         "scene_build",
@@ -238,7 +238,7 @@
         "warranty",
         "cta"
       ],
-      "notes": "RE-SYNTHESIZED 2026-09-30 (original overwritten by mistake); numerically within 1dB mean/max but NOT ear-approved — do not use in client work until Lip listens. 300->2400Hz 0.8s; batch track-A 2026-09-30",
+      "notes": "Re-synthesized 2026-09-30; Lip ear-approved in chat (replacing overwritten originals). RE-SYNTHESIZED 2026-09-30 (original overwritten by mistake); numerically within 1dB mean/max but NOT ear-approved — do not use in client work until Lip listens. 300->2400Hz 0.8s; batch track-A 2026-09-30",
       "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
@@ -255,8 +255,8 @@
       "duration_s": 0.6,
       "mood": "neutral",
       "energy": "medium",
-      "approved": false,
-      "approved_by": "pending-Lip-listen",
+      "approved": true,
+      "approved_by": "Lip",
       "approved_at": "2026-09-30",
       "event_types": [
         "price_reveal"
@@ -269,7 +269,7 @@
         "warranty",
         "cta"
       ],
-      "notes": "RE-SYNTHESIZED 2026-09-30 (original overwritten by mistake); numerically within 1dB mean/max but NOT ear-approved — do not use in client work until Lip listens. metallic ting; batch track-A 2026-09-30",
+      "notes": "Re-synthesized 2026-09-30; Lip ear-approved in chat (replacing overwritten originals). RE-SYNTHESIZED 2026-09-30 (original overwritten by mistake); numerically within 1dB mean/max but NOT ear-approved — do not use in client work until Lip listens. metallic ting; batch track-A 2026-09-30",
       "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
