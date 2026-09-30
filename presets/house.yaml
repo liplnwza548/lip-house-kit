@@ -22,8 +22,20 @@ audio:
       mood: main
     - id: piano-motivational-148119
       mood: alt
+    # BGM เสริม (Lip เลือก 2026-09-30 — ชอบ 3 จาก 4, ตัด piano-my-little-prince-815 ออก)
+    - id: guitar-tears-of-joy-839
+      mood: alt-guitar
+    - id: chill-sleepy-cat-135
+      mood: alt-lofi
+    - id: upbeat-feeling-happy-5
+      mood: alt-upbeat
   # SFX ประจำบ้าน (Lip-locked 2026-09-30 — สังเคราะห์เอง ใช้ทั้งหมด)
-  sfx_set: [click, pop, fast_whoosh, short_whoosh, impact_soft]
+  sfx_set: [click, pop, fast_whoosh, short_whoosh, impact_soft,
+            riser_08, ching, pop_low]
+  # ฟิลเตอร์ 3 ลุค (Lip เอาทั้งหมด 2026-09-30 — สูตรใน asset-research/filter_tests/FILTERS.md)
+  filter_looks: [vivid, warm, clean]
+  # ฟอนต์ไทย OFL (2026-09-30 — รอพี่ลิปดูตัวอย่างก่อนล็อกตัวหลัก)
+  thai_fonts: [Kanit-Bold, Mitr-SemiBold, Sarabun-Bold]
 hooks:
   # Hook หลัก (Lip-locked 2026-09-30)
   primary: [H02_flash_split, H03_rounded_reveal]
