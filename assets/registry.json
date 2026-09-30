@@ -145,7 +145,7 @@
         "cta"
       ],
       "notes": "Original Lip-approved file (2026-09-25). Recipe in tools/synth_sfx.py; bit-exact verified on ffmpeg 7.1.5/Debian 13 only — other machines regenerate + re-measure. 2kHz blip; gen_sfx.py",
-      "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
+      "generator": "tools/synth_sfx.py @ synth_sfx v2 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
       "asset_id": "pop",
@@ -176,7 +176,7 @@
         "cta"
       ],
       "notes": "Original Lip-approved file (2026-09-25). Recipe in tools/synth_sfx.py; bit-exact verified on ffmpeg 7.1.5/Debian 13 only — other machines regenerate + re-measure. 400->900Hz sweep; gen_sfx.py",
-      "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
+      "generator": "tools/synth_sfx.py @ synth_sfx v2 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
       "asset_id": "pop_low",
@@ -206,8 +206,8 @@
         "warranty",
         "cta"
       ],
-      "notes": "Re-synthesized 2026-09-30; Lip ear-approved in chat (replacing overwritten originals). RE-SYNTHESIZED 2026-09-30 (original overwritten by mistake); numerically within 1dB mean/max but NOT ear-approved — do not use in client work until Lip listens. 250->500Hz; batch track-A 2026-09-30",
-      "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
+      "notes": "Re-synthesized 2026-09-30 (originals overwritten by mistake); Lip ear-approved the re-synthesized files in chat. ",
+      "generator": "tools/synth_sfx.py @ synth_sfx v2 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
       "asset_id": "riser_08",
@@ -238,8 +238,8 @@
         "warranty",
         "cta"
       ],
-      "notes": "Re-synthesized 2026-09-30; Lip ear-approved in chat (replacing overwritten originals). RE-SYNTHESIZED 2026-09-30 (original overwritten by mistake); numerically within 1dB mean/max but NOT ear-approved — do not use in client work until Lip listens. 300->2400Hz 0.8s; batch track-A 2026-09-30",
-      "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
+      "notes": "Re-synthesized 2026-09-30 (originals overwritten by mistake); Lip ear-approved the re-synthesized files in chat. ",
+      "generator": "tools/synth_sfx.py @ synth_sfx v2 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
       "asset_id": "ching",
@@ -269,8 +269,8 @@
         "warranty",
         "cta"
       ],
-      "notes": "Re-synthesized 2026-09-30; Lip ear-approved in chat (replacing overwritten originals). RE-SYNTHESIZED 2026-09-30 (original overwritten by mistake); numerically within 1dB mean/max but NOT ear-approved — do not use in client work until Lip listens. metallic ting; batch track-A 2026-09-30",
-      "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
+      "notes": "Re-synthesized 2026-09-30 (originals overwritten by mistake); Lip ear-approved the re-synthesized files in chat. ",
+      "generator": "tools/synth_sfx.py @ synth_sfx v2 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
       "asset_id": "fast_whoosh",
@@ -302,7 +302,7 @@
         "cta"
       ],
       "notes": "Original Lip-approved file (2026-09-25). Recipe in tools/synth_sfx.py; bit-exact verified on ffmpeg 7.1.5/Debian 13 only — other machines regenerate + re-measure. bright 0.3s; gen_sfx.py",
-      "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
+      "generator": "tools/synth_sfx.py @ synth_sfx v2 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
       "asset_id": "short_whoosh",
@@ -334,7 +334,7 @@
         "cta"
       ],
       "notes": "Original Lip-approved file (2026-09-25). Recipe in tools/synth_sfx.py; bit-exact verified on ffmpeg 7.1.5/Debian 13 only — other machines regenerate + re-measure. swell 0.45s; gen_sfx.py",
-      "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
+      "generator": "tools/synth_sfx.py @ synth_sfx v2 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
       "asset_id": "impact_soft",
@@ -366,7 +366,7 @@
         "cta"
       ],
       "notes": "Original Lip-approved file (2026-09-25). Recipe in tools/synth_sfx.py; bit-exact verified on ffmpeg 7.1.5/Debian 13 only — other machines regenerate + re-measure. 90Hz thump; gen_sfx.py",
-      "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
+      "generator": "tools/synth_sfx.py @ synth_sfx v2 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     }
   ]
 }
