@@ -34,7 +34,8 @@ audio:
             riser_08, ching, pop_low]
   # ฟิลเตอร์ 3 ลุค (Lip เอาทั้งหมด 2026-09-30 — สูตรใน asset-research/filter_tests/FILTERS.md)
   filter_looks: [vivid, warm, clean]
-  # ฟอนต์ไทย OFL (2026-09-30 — รอพี่ลิปดูตัวอย่างก่อนล็อกตัวหลัก)
+  # ฟอนต์ไทย OFL (Lip ตัดสิน 2026-09-30: ซับใช้ Prompt-Bold เหมือนเดิม,
+  # Kanit/Mitr/Sarabun เก็บไว้ใช้ภายหลัง — ยังไม่ล็อกตัวหลักตัวที่สอง)
   thai_fonts: [Kanit-Bold, Mitr-SemiBold, Sarabun-Bold]
 hooks:
   # Hook หลัก (Lip-locked 2026-09-30)
