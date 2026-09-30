@@ -56,6 +56,8 @@ piano-motivational-148119 (alt) — กด -20dB ใต้เสียงพา�
 ```powershell
 # 1) วางไฟล์มีเดียตามโครงนี้ (โหลดเองจาก source_url ใน registry)
 setx ASSET_ROOT "D:\lip-assets"   # มี bgm\*.mp3, bgm_new\*.mp3, sfx\*.wav ข้างใน
+# 1b) ติดตั้ง dependency เครื่องมือ (validator ต้องใช้ jsonschema)
+pip install -r requirements.txt
 # 2) ตรวจใบลงทะเบียน ( missing / SHA ผิด / license ขาด / ID ซ้ำ = หยุดดังๆ )
 $env:ASSET_ROOT="D:\lip-assets"; python tools/validate_registry.py
 # 3) รันเทสต์รีจิสทรี — unit ไม่ต้องมีไฟล์มีเดีย, integration ต้องมี ASSET_ROOT

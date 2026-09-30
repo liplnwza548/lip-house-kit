@@ -2,8 +2,12 @@
 """Synthesize all 8 house SFX from recipes (ffmpeg lavfi, no binaries in repo).
 
 Recipes 1-5 are verbatim from template-lab/.../editorial-assets/v0.1/gen_sfx.py.
-Recipes 6-8 reconstruct track-A sounds (2026-09-30); each generation is
-checked against the approved file's mean/max volume (tolerance 1dB).
+Recipes 6-8 reconstruct track-A sounds (2026-09-30); verify any build with
+`--verify <refdir> <outdir>` (volumedetect mean/max within tolerance, else exit 1).
+
+Bit-exact scope: verified on ffmpeg 7.1.5 (Debian 13) only. lavfi noise
+seeds make WAV bytes reproducible on the same build; other machines MUST
+regenerate + re-measure (registry SHA is VM-canonical, not universal).
 
 Provenance for assets/registry.json (generator: this file + version tag).
 Usage: python3 tools/synth_sfx.py <outdir>
@@ -12,7 +16,44 @@ import subprocess
 import sys
 from pathlib import Path
 
-VERSION = "synth_sfx v1 (2026-09-30)"
+VERSION = "synth_sfx v2 (2026-09-30)"
+
+
+def measure(path: Path):
+    """Return (mean_db, max_db) via volumedetect."""
+    p = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(path),
+                        "-af", "volumedetect", "-f", "null", "/dev/null"],
+                       capture_output=True, text=True)
+    mean = maxv = None
+    for line in p.stderr.splitlines():
+        if "mean_volume" in line:
+            mean = float(line.split("mean_volume:")[1].split()[0])
+        if "max_volume" in line:
+            maxv = float(line.split("max_volume:")[1].split()[0])
+    if mean is None or maxv is None:
+        raise RuntimeError(f"volumedetect failed for {path}")
+    return mean, maxv
+
+
+def verify(outdir: Path, refdir: Path, tol_db: float = 1.0) -> int:
+    """Compare every synthesized file against reference wavs. Fail loud."""
+    bad = 0
+    for name, _, _, _ in RECIPES:
+        ref = refdir / f"{name}.wav"
+        new = outdir / f"{name}.wav"
+        if not ref.is_file() or not new.is_file():
+            print(f"VERIFY_MISSING: {name}")
+            bad += 1
+            continue
+        m0, p0 = measure(ref)
+        m1, p1 = measure(new)
+        dm, dp = abs(m1 - m0), abs(p1 - p0)
+        ok = dm <= tol_db and dp <= tol_db
+        print(f"{'VERIFY_OK' if ok else 'VERIFY_FAIL'} {name}: "
+              f"mean {m0:.1f}->{m1:.1f} (d={dm:.1f}), max {p0:.1f}->{p1:.1f} (d={dp:.1f})")
+        if not ok:
+            bad += 1
+    return 1 if bad else 0
 
 
 def run(cmd):
@@ -48,7 +89,15 @@ RECIPES = [
 
 
 def main() -> None:
-    outdir = Path(sys.argv[1] if len(sys.argv) > 1 else "sfx_out")
+    args = sys.argv[1:]
+    if args[:1] == ["--verify"]:
+        refdir = Path(args[1]) if len(args) > 1 else None
+        outdir = Path(args[2]) if len(args) > 2 else None
+        if not refdir or not outdir:
+            raise SystemExit("usage: synth_sfx.py --verify <refdir> <outdir> [tol_db]")
+        tol = float(args[3]) if len(args) > 3 else 1.0
+        sys.exit(verify(outdir, refdir, tol))
+    outdir = Path(args[0] if args and not args[0].startswith("-") else "sfx_out")
     outdir.mkdir(parents=True, exist_ok=True)
     for name, f32, af, dur in RECIPES:
         synth(outdir, name, f32, af, dur)

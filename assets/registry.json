@@ -144,7 +144,7 @@
         "warranty",
         "cta"
       ],
-      "notes": "2kHz blip; gen_sfx.py",
+      "notes": "Original Lip-approved file (2026-09-25). Recipe in tools/synth_sfx.py; bit-exact verified on ffmpeg 7.1.5/Debian 13 only — other machines regenerate + re-measure. 2kHz blip; gen_sfx.py",
       "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
@@ -175,7 +175,7 @@
         "warranty",
         "cta"
       ],
-      "notes": "400->900Hz sweep; gen_sfx.py",
+      "notes": "Original Lip-approved file (2026-09-25). Recipe in tools/synth_sfx.py; bit-exact verified on ffmpeg 7.1.5/Debian 13 only — other machines regenerate + re-measure. 400->900Hz sweep; gen_sfx.py",
       "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
@@ -192,8 +192,8 @@
       "duration_s": 0.18,
       "mood": "neutral",
       "energy": "medium",
-      "approved": true,
-      "approved_by": "Lip",
+      "approved": false,
+      "approved_by": "pending-Lip-listen",
       "approved_at": "2026-09-30",
       "event_types": [
         "caption_pop"
@@ -206,7 +206,7 @@
         "warranty",
         "cta"
       ],
-      "notes": "250->500Hz; batch track-A 2026-09-30",
+      "notes": "RE-SYNTHESIZED 2026-09-30 (original overwritten by mistake); numerically within 1dB mean/max but NOT ear-approved — do not use in client work until Lip listens. 250->500Hz; batch track-A 2026-09-30",
       "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
@@ -223,8 +223,8 @@
       "duration_s": 0.8,
       "mood": "neutral",
       "energy": "medium",
-      "approved": true,
-      "approved_by": "Lip",
+      "approved": false,
+      "approved_by": "pending-Lip-listen",
       "approved_at": "2026-09-30",
       "event_types": [
         "scene_build",
@@ -238,7 +238,7 @@
         "warranty",
         "cta"
       ],
-      "notes": "300->2400Hz 0.8s; batch track-A 2026-09-30",
+      "notes": "RE-SYNTHESIZED 2026-09-30 (original overwritten by mistake); numerically within 1dB mean/max but NOT ear-approved — do not use in client work until Lip listens. 300->2400Hz 0.8s; batch track-A 2026-09-30",
       "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
@@ -255,8 +255,8 @@
       "duration_s": 0.6,
       "mood": "neutral",
       "energy": "medium",
-      "approved": true,
-      "approved_by": "Lip",
+      "approved": false,
+      "approved_by": "pending-Lip-listen",
       "approved_at": "2026-09-30",
       "event_types": [
         "price_reveal"
@@ -269,7 +269,7 @@
         "warranty",
         "cta"
       ],
-      "notes": "metallic ting; batch track-A 2026-09-30",
+      "notes": "RE-SYNTHESIZED 2026-09-30 (original overwritten by mistake); numerically within 1dB mean/max but NOT ear-approved — do not use in client work until Lip listens. metallic ting; batch track-A 2026-09-30",
       "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
@@ -301,7 +301,7 @@
         "warranty",
         "cta"
       ],
-      "notes": "bright 0.3s; gen_sfx.py",
+      "notes": "Original Lip-approved file (2026-09-25). Recipe in tools/synth_sfx.py; bit-exact verified on ffmpeg 7.1.5/Debian 13 only — other machines regenerate + re-measure. bright 0.3s; gen_sfx.py",
       "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
@@ -333,7 +333,7 @@
         "warranty",
         "cta"
       ],
-      "notes": "swell 0.45s; gen_sfx.py",
+      "notes": "Original Lip-approved file (2026-09-25). Recipe in tools/synth_sfx.py; bit-exact verified on ffmpeg 7.1.5/Debian 13 only — other machines regenerate + re-measure. swell 0.45s; gen_sfx.py",
       "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
@@ -365,7 +365,7 @@
         "warranty",
         "cta"
       ],
-      "notes": "90Hz thump; gen_sfx.py",
+      "notes": "Original Lip-approved file (2026-09-25). Recipe in tools/synth_sfx.py; bit-exact verified on ffmpeg 7.1.5/Debian 13 only — other machines regenerate + re-measure. 90Hz thump; gen_sfx.py",
       "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     }
   ]
