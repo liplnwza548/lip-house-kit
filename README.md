@@ -58,8 +58,9 @@ piano-motivational-148119 (alt) — กด -20dB ใต้เสียงพา�
 setx ASSET_ROOT "D:\lip-assets"   # มี bgm\*.mp3, bgm_new\*.mp3, sfx\*.wav ข้างใน
 # 2) ตรวจใบลงทะเบียน ( missing / SHA ผิด / license ขาด / ID ซ้ำ = หยุดดังๆ )
 $env:ASSET_ROOT="D:\lip-assets"; python tools/validate_registry.py
-# 3) รันเทสต์รีจิสทรี
-$env:ASSET_ROOT="D:\lip-assets"; python -m pytest tests/test_asset_registry.py -q
+# 3) รันเทสต์รีจิสทรี — unit ไม่ต้องมีไฟล์มีเดีย, integration ต้องมี ASSET_ROOT
+python -m pytest tests/test_asset_registry_unit.py -q
+$env:ASSET_ROOT="D:\lip-assets"; python -m pytest tests/test_asset_registry_integration.py -q
 ```
 
 บน VM: `ASSET_ROOT=/home/box/subtitle-work/assets` (13 assets: BGM 5 + SFX 8,

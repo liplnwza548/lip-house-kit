@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-"""Validate assets/registry.json against real files under ASSET_ROOT.
+"""Validate assets/registry.json against the schema + real files.
 
-Fails LOUD (non-zero exit + reason) when: file missing, SHA mismatch,
-license evidence incomplete, asset unapproved, duplicate ID, path escapes
-ASSET_ROOT, or schema shape invalid.
+Pure function `validate(registry, asset_root) -> list[str]` (no globals,
+fresh error list every call). CLI reads ASSET_ROOT inside main() — never at
+import — and refuses to guess a machine default.
 
-Usage: ASSET_ROOT=/home/box/subtitle-work/assets python3 tools/validate_registry.py
+Fails LOUD when: schema invalid, file missing, SHA mismatch, license
+evidence incomplete, asset unapproved, duplicate ID, or path escapes root.
+
+Usage: ASSET_ROOT=/path/to/assets python3 tools/validate_registry.py
 """
 import hashlib
 import json
@@ -14,14 +17,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-REG = ROOT / "assets" / "registry.json"
-ASSET_ROOT = Path(os.environ.get("ASSET_ROOT", "/home/box/subtitle-work/assets")).resolve()
-
-ERRORS: list = []
-
-
-def fail(msg):
-    ERRORS.append(msg)
+SCHEMA_PATH = ROOT / "schemas" / "asset-registry.schema.json"
 
 
 def sha256(p: Path) -> str:
@@ -32,72 +28,81 @@ def sha256(p: Path) -> str:
     return h.hexdigest()
 
 
-def main() -> int:
-    try:
-        reg = json.loads(REG.read_text())
-    except Exception as e:
-        print(f"REGISTRY_UNREADABLE: {e}")
-        return 2
-    assets = reg.get("assets")
-    if not isinstance(assets, list) or not assets:
-        print("REGISTRY_EMPTY: 'assets' must be a non-empty list")
-        return 2
+def schema_errors(reg: dict) -> list:
+    """Validate shape with the real JSON schema (Draft 2020-12)."""
+    import jsonschema
+    schema = json.loads(SCHEMA_PATH.read_text())
+    problems = []
+    validator = jsonschema.Draft202012Validator(schema)
+    for e in validator.iter_errors(reg):
+        where = "/" + "/".join(str(p) for p in e.absolute_path)
+        problems.append(f"schema{where or '/'}: {e.message[:160]}")
+    return problems
 
+
+def validate(reg: dict, asset_root: Path) -> list:
+    errors: list = []
+    errors.extend(schema_errors(reg))
+    assets = reg.get("assets")
+    if not isinstance(assets, list):
+        return errors + ["'assets' must be a list"]
     seen = set()
-    base = {"asset_id", "kind", "logical_path", "sha256", "source_url",
-            "license_name", "license_evidence", "commercial_use",
-            "attribution_required", "duration_s", "mood", "energy",
-            "approved", "approved_by", "approved_at"}
     for i, a in enumerate(assets):
-        tag = a.get("asset_id", f"index#{i}")
         if not isinstance(a, dict):
-            fail(f"{tag}: entry is not an object")
+            errors.append(f"index#{i}: entry is not an object ({type(a).__name__})")
             continue
-        missing = base - set(a.keys())
-        if missing:
-            fail(f"{tag}: missing fields {sorted(missing)}")
-        if a.get("kind") == "bgm":
-            for k in ("bpm", "instrumental", "vocal_presence", "loop_safe"):
-                if k not in a:
-                    fail(f"{tag}: bgm missing '{k}'")
-        if a.get("kind") == "sfx":
-            for k in ("event_types", "min_gap_s", "avoid_during"):
-                if k not in a:
-                    fail(f"{tag}: sfx missing '{k}'")
+        tag = a.get("asset_id", f"index#{i}")
         if tag in seen:
-            fail(f"{tag}: DUPLICATE asset_id")
+            errors.append(f"{tag}: DUPLICATE asset_id")
         seen.add(tag)
         if not a.get("approved"):
-            fail(f"{tag}: NOT APPROVED (approved=false)")
+            errors.append(f"{tag}: NOT APPROVED (approved=false)")
         for k in ("license_name", "license_evidence", "source_url"):
             if not a.get(k):
-                fail(f"{tag}: incomplete license evidence ('{k}' empty)")
+                errors.append(f"{tag}: incomplete license evidence ('{k}' empty)")
         if a.get("kind") == "bgm" and not a.get("commercial_use"):
-            fail(f"{tag}: bgm not cleared for commercial use")
+            errors.append(f"{tag}: bgm not cleared for commercial use")
         lp = a.get("logical_path", "")
-        if not lp or lp.startswith("/") or ".." in Path(lp).parts:
-            fail(f"{tag}: logical_path '{lp}' must be relative inside ASSET_ROOT")
+        if not isinstance(lp, str) or not lp or lp.startswith("/") or ".." in Path(lp).parts:
+            errors.append(f"{tag}: logical_path '{lp}' must be relative inside ASSET_ROOT")
             continue
-        real = (ASSET_ROOT / lp).resolve()
+        real = (asset_root / lp).resolve()
         try:
-            real.relative_to(ASSET_ROOT)
+            real.relative_to(asset_root.resolve())
         except ValueError:
-            fail(f"{tag}: path escapes ASSET_ROOT: {lp}")
+            errors.append(f"{tag}: path escapes ASSET_ROOT: {lp}")
             continue
         if not real.is_file():
-            fail(f"{tag}: FILE MISSING: {lp} (ASSET_ROOT={ASSET_ROOT})")
+            errors.append(f"{tag}: FILE MISSING: {lp} (ASSET_ROOT={asset_root})")
             continue
         if real.suffix.lower() in (".mp3", ".wav", ".ogg", ".flac", ".m4a"):
             actual = sha256(real)
             if actual != a.get("sha256"):
-                fail(f"{tag}: SHA MISMATCH for {lp}\n  registry: {a.get('sha256')}\n  actual:   {actual}")
+                errors.append(f"{tag}: SHA MISMATCH for {lp}\n  registry: {a.get('sha256')}\n  actual:   {actual}")
+    return errors
 
-    if ERRORS:
-        print(f"REGISTRY_INVALID: {len(ERRORS)} problem(s) (ASSET_ROOT={ASSET_ROOT})")
-        for e in ERRORS:
+
+def main(asset_root=None) -> int:
+    raw = asset_root or os.environ.get("ASSET_ROOT")
+    if not raw:
+        print("ASSET_ROOT is not set — point it at your media folder, e.g.\n"
+              "  ASSET_ROOT=/home/box/subtitle-work/assets (VM)\n"
+              "  $env:ASSET_ROOT='D:\\lip-assets' (Windows)")
+        return 2
+    root = Path(raw)
+    reg_path = ROOT / "assets" / "registry.json"
+    try:
+        reg = json.loads(reg_path.read_text())
+    except Exception as e:
+        print(f"REGISTRY_UNREADABLE: {e}")
+        return 2
+    errors = validate(reg, root)
+    if errors:
+        print(f"REGISTRY_INVALID: {len(errors)} problem(s) (ASSET_ROOT={root})")
+        for e in errors:
             print(" -", e)
         return 1
-    print(f"REGISTRY_OK: {len(assets)} assets approved+verified (ASSET_ROOT={ASSET_ROOT})")
+    print(f"REGISTRY_OK: {len(reg['assets'])} assets approved+verified (ASSET_ROOT={root})")
     return 0
 
 

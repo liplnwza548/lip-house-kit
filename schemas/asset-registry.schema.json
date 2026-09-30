@@ -40,6 +40,7 @@
         "event_types": {"type": "array", "items": {"type": "string"}, "minItems": 1},
         "min_gap_s": {"type": "number", "minimum": 0},
         "avoid_during": {"type": "array", "items": {"type": "string"}},
+        "generator": {"type": "string"},
         "notes": {"type": "string"}
       },
       "allOf": [

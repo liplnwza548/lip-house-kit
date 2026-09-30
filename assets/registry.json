@@ -9,7 +9,7 @@
       "source_url": "https://pixabay.com/music/corporate-corporate-piano-uplifting-moments-482783",
       "origin": "download",
       "license_name": "Pixabay Content License",
-      "license_evidence": "subtitle-work/assets/bgm/README.md + page URL above",
+      "license_evidence": "https://pixabay.com/music/corporate-corporate-piano-uplifting-moments-482783 (Pixabay Content License)",
       "commercial_use": true,
       "attribution_required": false,
       "duration_s": 120.29,
@@ -32,7 +32,7 @@
       "source_url": "https://pixabay.com/music/corporate-happy-motivational-uplifting-corporate-148119",
       "origin": "download",
       "license_name": "Pixabay Content License",
-      "license_evidence": "subtitle-work/assets/bgm/README.md + page URL above",
+      "license_evidence": "https://pixabay.com/music/corporate-happy-motivational-uplifting-corporate-148119 (Pixabay Content License)",
       "commercial_use": true,
       "attribution_required": false,
       "duration_s": 122.1,
@@ -55,7 +55,7 @@
       "source_url": "https://assets.mixkit.co/music/839/839.mp3",
       "origin": "download",
       "license_name": "Mixkit License",
-      "license_evidence": "subtitle-work/assets/bgm_new/SOURCES.md + https://mixkit.co/license/",
+      "license_evidence": "https://mixkit.co/license/ (Mixkit License; file https://assets.mixkit.co/music/839/839.mp3)",
       "commercial_use": true,
       "attribution_required": false,
       "duration_s": 140.17,
@@ -78,7 +78,7 @@
       "source_url": "https://assets.mixkit.co/music/135/135.mp3",
       "origin": "download",
       "license_name": "Mixkit License",
-      "license_evidence": "subtitle-work/assets/bgm_new/SOURCES.md + https://mixkit.co/license/",
+      "license_evidence": "https://mixkit.co/license/ (Mixkit License; file https://assets.mixkit.co/music/135/135.mp3)",
       "commercial_use": true,
       "attribution_required": false,
       "duration_s": 119.16,
@@ -101,7 +101,7 @@
       "source_url": "https://assets.mixkit.co/music/5/5.mp3",
       "origin": "download",
       "license_name": "Mixkit License",
-      "license_evidence": "subtitle-work/assets/bgm_new/SOURCES.md + https://mixkit.co/license/",
+      "license_evidence": "https://mixkit.co/license/ (Mixkit License; file https://assets.mixkit.co/music/5/5.mp3)",
       "commercial_use": true,
       "attribution_required": false,
       "duration_s": 147.98,
@@ -124,7 +124,7 @@
       "source_url": "synthesized on VM (ffmpeg lavfi)",
       "origin": "synth",
       "license_name": "house-synth (team-made, no third-party rights)",
-      "license_evidence": "subtitle-work/assets/sfx/SOURCES.md + template-lab/.../editorial-assets/v0.1/gen_sfx.py",
+      "license_evidence": "house-synth (team-made, no third-party rights)",
       "commercial_use": true,
       "attribution_required": false,
       "duration_s": 0.1,
@@ -144,7 +144,8 @@
         "warranty",
         "cta"
       ],
-      "notes": "2kHz blip; gen_sfx.py"
+      "notes": "2kHz blip; gen_sfx.py",
+      "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
       "asset_id": "pop",
@@ -154,7 +155,7 @@
       "source_url": "synthesized on VM (ffmpeg lavfi)",
       "origin": "synth",
       "license_name": "house-synth (team-made, no third-party rights)",
-      "license_evidence": "subtitle-work/assets/sfx/SOURCES.md + template-lab/.../editorial-assets/v0.1/gen_sfx.py",
+      "license_evidence": "house-synth (team-made, no third-party rights)",
       "commercial_use": true,
       "attribution_required": false,
       "duration_s": 0.15,
@@ -174,17 +175,18 @@
         "warranty",
         "cta"
       ],
-      "notes": "400->900Hz sweep; gen_sfx.py"
+      "notes": "400->900Hz sweep; gen_sfx.py",
+      "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
       "asset_id": "pop_low",
       "kind": "sfx",
       "logical_path": "sfx/pop_low.wav",
-      "sha256": "17d52a9c0397ccd26c13ddd5a4be9496d13480bbb540e47a8c4dde7241eb6116",
+      "sha256": "96beae1c1a04d226122bdd42ffc5393678bb8ada07018374fc8f50b22a8e8e45",
       "source_url": "synthesized on VM (ffmpeg lavfi)",
       "origin": "synth",
       "license_name": "house-synth (team-made, no third-party rights)",
-      "license_evidence": "subtitle-work/assets/sfx/SOURCES.md + template-lab/.../editorial-assets/v0.1/gen_sfx.py",
+      "license_evidence": "house-synth (team-made, no third-party rights)",
       "commercial_use": true,
       "attribution_required": false,
       "duration_s": 0.18,
@@ -204,17 +206,18 @@
         "warranty",
         "cta"
       ],
-      "notes": "250->500Hz; batch track-A 2026-09-30"
+      "notes": "250->500Hz; batch track-A 2026-09-30",
+      "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
       "asset_id": "riser_08",
       "kind": "sfx",
       "logical_path": "sfx/riser_08.wav",
-      "sha256": "6f2e6f383ec0f23e0be971f3779ba357ee46b2dfd47510baf8b0b6d7a3320062",
+      "sha256": "875e19fe6d0d3a79f8b996a4b72fb64ba0956251b276ef7801832f7a6161e031",
       "source_url": "synthesized on VM (ffmpeg lavfi)",
       "origin": "synth",
       "license_name": "house-synth (team-made, no third-party rights)",
-      "license_evidence": "subtitle-work/assets/sfx/SOURCES.md + template-lab/.../editorial-assets/v0.1/gen_sfx.py",
+      "license_evidence": "house-synth (team-made, no third-party rights)",
       "commercial_use": true,
       "attribution_required": false,
       "duration_s": 0.8,
@@ -235,17 +238,18 @@
         "warranty",
         "cta"
       ],
-      "notes": "300->2400Hz 0.8s; batch track-A 2026-09-30"
+      "notes": "300->2400Hz 0.8s; batch track-A 2026-09-30",
+      "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
       "asset_id": "ching",
       "kind": "sfx",
       "logical_path": "sfx/ching.wav",
-      "sha256": "caf7137113e034ebd40c5e7f313e6a749d58276eb7693c0b9e3c7a2965b781bb",
+      "sha256": "97180e0af51fce6b32cc2b3d46dcfc52e69b8c8df1a5bbee084d8f51c16607fb",
       "source_url": "synthesized on VM (ffmpeg lavfi)",
       "origin": "synth",
       "license_name": "house-synth (team-made, no third-party rights)",
-      "license_evidence": "subtitle-work/assets/sfx/SOURCES.md + template-lab/.../editorial-assets/v0.1/gen_sfx.py",
+      "license_evidence": "house-synth (team-made, no third-party rights)",
       "commercial_use": true,
       "attribution_required": false,
       "duration_s": 0.6,
@@ -265,7 +269,8 @@
         "warranty",
         "cta"
       ],
-      "notes": "metallic ting; batch track-A 2026-09-30"
+      "notes": "metallic ting; batch track-A 2026-09-30",
+      "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
       "asset_id": "fast_whoosh",
@@ -275,7 +280,7 @@
       "source_url": "synthesized on VM (ffmpeg lavfi)",
       "origin": "synth",
       "license_name": "house-synth (team-made, no third-party rights)",
-      "license_evidence": "subtitle-work/assets/sfx/SOURCES.md + template-lab/.../editorial-assets/v0.1/gen_sfx.py",
+      "license_evidence": "house-synth (team-made, no third-party rights)",
       "commercial_use": true,
       "attribution_required": false,
       "duration_s": 0.3,
@@ -296,7 +301,8 @@
         "warranty",
         "cta"
       ],
-      "notes": "bright 0.3s; gen_sfx.py"
+      "notes": "bright 0.3s; gen_sfx.py",
+      "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
       "asset_id": "short_whoosh",
@@ -306,7 +312,7 @@
       "source_url": "synthesized on VM (ffmpeg lavfi)",
       "origin": "synth",
       "license_name": "house-synth (team-made, no third-party rights)",
-      "license_evidence": "subtitle-work/assets/sfx/SOURCES.md + template-lab/.../editorial-assets/v0.1/gen_sfx.py",
+      "license_evidence": "house-synth (team-made, no third-party rights)",
       "commercial_use": true,
       "attribution_required": false,
       "duration_s": 0.45,
@@ -327,7 +333,8 @@
         "warranty",
         "cta"
       ],
-      "notes": "swell 0.45s; gen_sfx.py"
+      "notes": "swell 0.45s; gen_sfx.py",
+      "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     },
     {
       "asset_id": "impact_soft",
@@ -337,7 +344,7 @@
       "source_url": "synthesized on VM (ffmpeg lavfi)",
       "origin": "synth",
       "license_name": "house-synth (team-made, no third-party rights)",
-      "license_evidence": "subtitle-work/assets/sfx/SOURCES.md + template-lab/.../editorial-assets/v0.1/gen_sfx.py",
+      "license_evidence": "house-synth (team-made, no third-party rights)",
       "commercial_use": true,
       "attribution_required": false,
       "duration_s": 0.55,
@@ -358,7 +365,8 @@
         "warranty",
         "cta"
       ],
-      "notes": "90Hz thump; gen_sfx.py"
+      "notes": "90Hz thump; gen_sfx.py",
+      "generator": "tools/synth_sfx.py @ synth_sfx v1 (2026-09-30) — regenerates all 8; old 5 bit-exact, new 3 within 1dB mean/max of Lip-approved files"
     }
   ]
 }
