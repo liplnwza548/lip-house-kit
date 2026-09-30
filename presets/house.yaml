@@ -16,12 +16,18 @@ audio:
   bed_lift_nominal_db: 2.0
   speech_tolerance_db: 1.5
   centroid_drift_max: 0.10
-  # BGM หลัก (Pixabay Commercial-use — โหลดเอง ไม่แถมไฟล์ใน repo)
+  # BGM หลัก (Lip-locked 2026-09-30 — เปียโนกลาง ไม่เร็วไม่ช้า, Pixabay Commercial-use)
   tracks:
     - id: piano-corporate-482783
       mood: main
     - id: piano-motivational-148119
       mood: alt
+  # SFX ประจำบ้าน (Lip-locked 2026-09-30 — สังเคราะห์เอง ใช้ทั้งหมด)
+  sfx_set: [click, pop, fast_whoosh, short_whoosh, impact_soft]
+hooks:
+  # Hook หลัก (Lip-locked 2026-09-30)
+  primary: [H02_flash_split, H03_rounded_reveal]
+  parked: [H01_rapid5, H04_motion_hero]
 
 subtitle:
   style: Viral Pop
