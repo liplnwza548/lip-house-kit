@@ -40,7 +40,10 @@ audio:
 hooks:
   # Hook หลัก (Lip-locked 2026-09-30)
   primary: [H02_flash_split, H03_rounded_reveal]
-  parked: [H01_rapid5, H04_motion_hero]
+  approved: [H01_rapid5, H05_zoom_punch_video]
+  testing: [H06_wipe_reveal, H07_blur_sharp, H08_text_slam]
+  rejected: [H04_motion_hero]
+  parked: []
 
 subtitle:
   style: Viral Pop
