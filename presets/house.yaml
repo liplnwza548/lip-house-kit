@@ -43,9 +43,10 @@ hooks:
   approved: [H01_rapid5, H05_zoom_punch_video, H06_wipe_reveal, H07_blur_sharp,
              H09_circle_reveal, H10_flash_strobe, H11_freeze_punch,
              H12_spin_settle, H13_triple_panel, H14_mono_vivid,
-             H15_whip_slide, H16_mirror_open, H17_punch_cuts]
-  testing: [H18_pan_scan, H19_inset_pop, H20_speed_ramp]
-  rejected: [H04_motion_hero, H08_text_slam]
+             H15_whip_slide, H16_mirror_open, H17_punch_cuts,
+             H18_pan_scan, H19_inset_pop]
+  testing: [H21_shake_punch, H22_glow_pulse, H23_tunnel_zoom]
+  rejected: [H04_motion_hero, H08_text_slam, H20_speed_ramp]
   parked: []
 
 subtitle:
