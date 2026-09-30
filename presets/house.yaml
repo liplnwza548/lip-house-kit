@@ -44,8 +44,9 @@ hooks:
              H09_circle_reveal, H10_flash_strobe, H11_freeze_punch,
              H12_spin_settle, H13_triple_panel, H14_mono_vivid,
              H15_whip_slide, H16_mirror_open, H17_punch_cuts,
-             H18_pan_scan, H19_inset_pop, H21_shake_punch, H23_tunnel_zoom]
-  testing: [H24_zoomout_reveal, H25_doubleflash_punch]
+             H18_pan_scan, H19_inset_pop, H21_shake_punch, H23_tunnel_zoom,
+             H24_zoomout_reveal, H25_doubleflash_punch]
+  testing: []
   rejected: [H04_motion_hero, H08_text_slam, H20_speed_ramp, H22_glow_pulse]
   parked: []
 
