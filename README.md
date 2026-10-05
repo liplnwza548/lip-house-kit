@@ -27,7 +27,7 @@ factory pipelines. **ไม่มีคีย์ ไม่มีงานลู�
   (AGY ห้ามล็อกบท) — วิดีโอเข้า → ร่างบท + uncertain list ออก
 - `factories/qa/pipeline.py` — ไฟล์ไฟนอลเข้า → คำตัดสิน + ส่ง Drive
   (QA เฟรม + มิเตอร์ + ประตูเสียง, deliver ปิดเป็นค่าเริ่มต้น)
-- `renderer/` — สมองเบิร์นซับ (เทสต์ 162 ข้อ)
+- `renderer/` — สมองเบิร์นซับ (เทสต์หน่วย 152 ข้อ + เทสเชื่อมงานจริง 10 ข้อที่ข้ามเองบนเครื่องใหม่)
 
 ## เริ่มใช้ (Windows: Python 3.10+, ffmpeg)
 
@@ -35,7 +35,7 @@ factory pipelines. **ไม่มีคีย์ ไม่มีงานลู�
 python -m venv .venv; .\.venv\Scripts\Activate.ps1
 pip install -r renderer/requirements.txt
 copy NUL .env  # then put GROQ_API_KEY inside (never commit it)
-.\.venv\Scripts\python.exe -m pytest renderer/tests -q  # must be 162 passed
+.\.venv\Scripts\python.exe -m pytest renderer/tests -q  # 152 passed + 10 skipped (integration needs real job files, VM only)
 ```
 
 โรงซับ 1 คลิป: เขียน work-order.json → `python factories/subtitle/pipeline.py

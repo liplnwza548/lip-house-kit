@@ -34,6 +34,15 @@ from thai_line_split import count_syllables  # noqa: E402
 
 SCRIPT = Path("/home/box/subtitle-work/clips/batch6/script/c6.approved.txt")
 
+# Integration gate: 7 tests below read Lip's real job file, which is
+# deliberately NOT committed to the public mirror. On a fresh clone
+# (Bean's machine) they skip with reason instead of failing.
+needs_real_script = unittest.skipUnless(
+    SCRIPT.exists(),
+    "integration: needs real job file "
+    "clips/batch6/script/c6.approved.txt (skipped on fresh clone)",
+)
+
 
 def C(i, s, e, text, **kw):
     d = {"line_index": i, "script_line": text, "text": text,
@@ -43,6 +52,7 @@ def C(i, s, e, text, **kw):
 
 
 class TestScriptLock(unittest.TestCase):
+    @needs_real_script
     def test_lock_reads_lip_script_with_hash(self):
         lock = lock_script(SCRIPT)
         self.assertEqual(len(lock["lines"]), 17)
@@ -50,6 +60,7 @@ class TestScriptLock(unittest.TestCase):
         self.assertIn("ใครแบกกระเป๋าแล้วปวดไหล่", lock["lines"])
         self.assertIn("ก็เข้ากั๊นเข้ากัน", lock["lines"])
 
+    @needs_real_script
     def test_diff_finds_missing_sentence(self):
         lock = lock_script(SCRIPT)
         rep = diff_report(lock["lines"], "ไปตำกันได้เลย น้ำหนักเบา")
@@ -59,12 +70,14 @@ class TestScriptLock(unittest.TestCase):
         miss = [r for r in rep if r["type"] == "script_not_found_in_stt"]
         self.assertTrue(all(m["script"] in lock["lines"] for m in miss))
 
+    @needs_real_script
     def test_diff_clean_on_full_stt(self):
         lock = lock_script(SCRIPT)
         rep = diff_report(lock["lines"], lock["text"])
         self.assertEqual(
             [r for r in rep if r["type"] == "script_not_found_in_stt"], [])
 
+    @needs_real_script
     def test_coverage_passes_on_exact_spans(self):
         lock = lock_script(SCRIPT)
         cues = []
@@ -77,6 +90,7 @@ class TestScriptLock(unittest.TestCase):
         self.assertEqual(
             verify_coverage(lock["text"], cues)["chars"], len(lock["text"]))
 
+    @needs_real_script
     def test_coverage_refuses_dropped_word(self):
         lock = lock_script(SCRIPT)
         cues = []
@@ -90,6 +104,7 @@ class TestScriptLock(unittest.TestCase):
         with self.assertRaises(CoverageError):
             verify_coverage(lock["text"], cues)
 
+    @needs_real_script
     def test_coverage_refuses_missing_span(self):
         lock = lock_script(SCRIPT)
         cues = [C(0, 0.0, 1.0, lock["lines"][0])]
@@ -137,6 +152,7 @@ class TestPlanner(unittest.TestCase):
         self.assertTrue(problems)
         self.assertTrue(all(p["type"] == "unresolvable" for p in problems))
 
+    @needs_real_script
     def test_plan_cues_chains_char_spans(self):
         lock = lock_script(SCRIPT)
         sents = []

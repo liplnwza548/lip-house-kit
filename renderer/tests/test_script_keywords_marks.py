@@ -76,6 +76,16 @@ def visible_texts(ass_text: str, layer: str = "0") -> list[str]:
 
 
 JOB_CLIP04 = Path("/home/box/subtitle-work/jobs/clip04.json")
+CLIP04_TXT = Path("/home/box/subtitle-work/scripts/batch01_v1/clip04.txt")
+
+# Integration gate: 3 tests below read Lip's real job files, which are
+# deliberately NOT committed to the public mirror. On a fresh clone
+# (Bean's machine) they skip with reason instead of failing.
+needs_clip04 = unittest.skipUnless(
+    JOB_CLIP04.exists() and CLIP04_TXT.exists(),
+    "integration: needs real job files "
+    "jobs/clip04.json + scripts/batch01_v1/clip04.txt (skipped on fresh clone)",
+)
 
 
 class TestT3Colorize(unittest.TestCase):
@@ -101,6 +111,7 @@ class TestT3Colorize(unittest.TestCase):
         self.assertIn(YELLOW_OPEN + "สวยแพง" + YELLOW_CLOSE, out)
         self.assertEqual(strip_tags(out), "กระเป๋าหนังสีดำสวยแพงมาก")
 
+    @needs_clip04
     def test_load_job_keywords_clip04(self):
         kws = load_keywords_job(JOB_CLIP04)
         self.assertEqual(len(kws), 9)
@@ -223,6 +234,7 @@ class TestT5GeometryLock(unittest.TestCase):
         self.assertIn(",47,47,158,", style)
         self.assertIn(r"\pos(540,1580)", ass_text)
 
+    @needs_clip04
     def test_clip04_script_all_fit_after_split(self):
         script = [
             ln.strip()
@@ -295,6 +307,7 @@ class TestT5GeometryLock(unittest.TestCase):
         self.assertEqual(qa["overlays"], 0)
         self.assertGreater(qa["stacked_cues"], 0)
 
+    @needs_clip04
     def test_clip04_keyword_coverage(self):
         """All 8 matchable clip04 keywords render yellow on Layer0.
 
