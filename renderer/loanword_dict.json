@@ -329,6 +329,26 @@
         "สปิง",
         "สปริง"
       ]
+    },
+    {
+      "canonical": "มากิโน่",
+      "syllables": 3,
+      "protect": true,
+      "variants": [
+        "มากิโน่",
+        "มากิโน",
+        "Makino",
+        "makino",
+        "MAKINO"
+      ]
+    },
+    {
+      "canonical": "วัฒนาทูลคอมเมิร์ซ",
+      "syllables": 6,
+      "protect": true,
+      "variants": [
+        "วัฒนาทูลคอมเมิร์ซ"
+      ]
     }
   ],
   "corrections": [
